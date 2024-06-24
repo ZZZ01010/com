@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <title>中国传统节日首页</title>
+  <link rel="icon" href="./img/头部logo.png" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      padding: 100px;
+    }
+
+    .intro {
+      font-size: 18px;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    body,
+    ul,
+    li,
+    ol,
+    dl,
+    dd,
+    dt,
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    form,
+    img {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      list-style: none;
+    }
+
+    a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #ffd900;
+    }
+
+    .room {
+      width: 100%;
+      height: 800px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .room header {
+      width: 100%;
+      background: #2e2e2e28;
+      z-index: 999;
+      position: absolute;
+    }
+
+    .room header .con {
+      width: 1300px;
+      height: 80px;
+      margin: 0 auto;
+    }
+
+    .room header .left {
+      margin-top: 20px;
+      float: left;
+      font-family: "freshskin";
+      display: flex;
+    }
+
+    .room header .left a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+    }
+
+    .room header .left a:hover {
+      background-color: #e5e5e5a8;
+    }
+
+    .room header .left a {
+      margin-left: 10px;
+    }
+
+    .room header img {
+      padding-top: 10px;
+      width: 90%;
+      height: 60px;
+      margin-left: 20px;
+    }
+
+    .room header .right {
+      width: 200px;
+      height: 20px;
+      font-weight: bold;
+      font-size: 20px;
+      float: right;
+    }
+
+    .container {
+      width: 100%;
+      height: 800px;
+      position: absolute;
+      top: 39%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #f5f5f5;
+      padding: 50px;
+      margin-top: 70px;
+    }
+
+    #slide {
+      width: max-content;
+      margin-top: 50px;
+    }
+
+    .item {
+      width: 150px;
+      height: 200px;
+      background-position: 50%, 50%;
+      display: inline-block;
+      background-size: cover;
+      position: absolute;
+      top: 70%;
+      /* transform: translateY(-50%); */
+      border-radius: 20px;
+      box-shadow: 0 30px 50px #505050;
+      transition: .5s;
+    }
+
+    .item:nth-child(1),
+    .item:nth-child(2) {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* transform: translateY(0); */
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .item:nth-child(3) {
+      left: 50%;
+    }
+
+    .item:nth-child(4) {
+      left: calc(50% + 220px);
+    }
+
+    .item:nth-child(5) {
+      left: calc(50% + 440px);
+    }
+
+    .item:nth-child(n+6) {
+      left: calc(50% + 660px);
+      opacity: 0;
+    }
+
+    .item:nth-child(n+7) {
+      left: calc(50% + 660px);
+      opacity: 0;
+    }
+
+    .item .content {
+      width: 600px;
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: system-ui;
+      color: #ffffff;
+      display: none;
+    }
+
+    .content_1 {
+      font-size: 40px;
+      font-weight: bold;
+      opacity: 0;
+      animation: showcontent 1s ease-in-out 1 forwards;
+      margin-left: 100px;
+      text-shadow: 10px 10px 10px #393939;
+    }
+
+    .item:nth-child(2) .content {
+      display: block;
+    }
+
+    .item .name {
+      font-size: 40px;
+      font-weight: bold;
+      opacity: 0;
+      animation: showcontent 1s ease-in-out 1 forwards;
+      margin-left: 200px;
+      text-shadow: 10px 10px 10px #393939;
+    }
+
+    .item .des {
+      margin: 20px 0;
+      opacity: 0;
+      animation: showcontent 1s ease-in-out 0.3s 1 forwards;
+      padding: 20px;
+      margin-left: 100px;
+      text-shadow: 10px 8px 8px #393939;
+      font-weight: bold;
+      box-shadow: 0px 0px 10px #2e2e2e;
+    }
+
+    .item button {
+      padding: 10px 20px;
+      margin-left: 150px;
+      border: none;
+      border-radius: 20px;
+      opacity: 0;
+      animation: showcontent 1s ease-in-out 0.6s 1 forwards;
+    }
+
+    @keyframes showcontent {
+      from {
+        opacity: 0;
+        transform: translateY(100px);
+        filter: blur(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    .buttons {
+      width: 100%;
+      position: absolute;
+      bottom: 50px;
+      margin-left: 100px;
+      text-align: left;
+    }
+
+    .s_button {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      color: gray;
+      background-color: #fff;
+      font-weight: 25px;
+      border-radius: 50%;
+      font-weight: bold;
+      border: 1px solid #555;
+      margin: 0 25px;
+      transition: .5s;
+    }
+
+    .s_button:hover {
+      cursor: pointer;
+      background-color: #ccc;
+    }
+
+    .end {
+      width: 100%;
+      height: 1100px;
+      background: url(./img/背景2.jpg);
+    }
+
+    .try {
+      width: 100%;
+      height: 312px;
+      padding-top: 50px;
+    }
+
+    .try header {
+      width: 400px;
+      height: 95px;
+      background: #0000002a;
+      border-radius: 48px;
+      margin: 0 auto;
+      box-sizing: border-box;
+      padding: 7px 0px 0 35px;
+    }
+
+    .try header img {
+      width: 60%;
+      height: 80px;
+      margin-left: 60px;
+    }
+
+    .try p {
+      margin-top: 10px;
+      text-align: center;
+      color: #000000;
+    }
+
+    .try ul {
+      margin: 70px auto 0;
+      width: 960px;
+    }
+
+    .try ul li {
+      width: 291px;
+      height: 251px;
+      float: left;
+      margin-right: 4%;
+      margin-bottom: 40px;
+      position: relative;
+      perspective: 230px;
+      margin-bottom: 100px;
+    }
+
+    .try ul li button {
+      padding: 10px 20px;
+      margin-top: 280px;
+      margin-left: 80px;
+      border-radius: 20px;
+    }
+
+    .try ul li:last-child {
+      margin-right: 0;
+    }
+
+    .try ul li img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      backface-visibility: hidden;
+      transition: all 0.5s ease-in 0s;
+      width: 251px;
+      height: 251px;
+      border-radius: 10%;
+    }
+
+    .try ul li img.fan {
+      transform: rotateX(-180deg);
+    }
+
+    .try ul li:hover img.fan {
+      transform: rotateX(0deg);
+    }
+
+    .try ul li:hover img.zheng {
+      transform: rotateX(180deg);
+    }
+
+    .bot {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .bot button {
+      padding: 20px 50px;
+      border-radius: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      background: #969696;
+    }
+
+    .banquan {
+      width: 100%;
+      height: 60px;
+      background: #333333;
+      text-align: center;
+    }
+
+    .banquan a {
+      line-height: 60px;
+    }
+
+    footer {
+      background-color: #343a40;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="room">
+    <header>
+      <div class="con">
+        <section class="right"><img src="./img/logo5.png" /></section>
+        <section class="left">
+          <a href="./xisu.html">节日习俗</a>
+          <a href="./meishi.html">节日美食</a>
+          <a href="./riqi.html">节日时间</a>
+          <a href="./liuyan.html">在线留言</a>
+        </section>
+      </div>
+    </header>
+    <div class="container">
+      <div id="slide">
+        <div class="item" style="background-image: url(./img/春节.png);">
+
+          <div class="content">
+            <div class="name">【春节】</div>
+            <div class="des">
+              正月初一,春节，是农历正月初一，又叫阴历年，俗称“过年”。这是中国民间最隆重、最热闹的一个传统节日。春节的历史很悠久，它起源于殷商时期年头岁尾的祭神祭祖活动。按照中国农历，正月初一古称元日、元辰、元正、元朔、元旦等，俗称年初一，到了民国时期，改用公历，公历的一月一日称为元旦，把农历的一月一日叫春节。
+            </div>
+            <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+          </div>
+        </div>
+        <div class="item" style="background-image: url(./img/元宵.png);">
+          <div class="content">
+            <div class="name">【元宵】</div>
+            <div class="des">
+              正月十五,是中国一个重要的传统节日。是一年中第一个月圆之夜，也是一元复始，大地回春的夜晚，人们对此加以庆祝，也是庆贺新春的延续
+              ，因此又称“上元节”，即农历正月十五日。在古书中，这一天称为“上元”，其夜称“元夜”、“元夕”或“元宵”。而元宵这一名称一直沿用至今。</div>
+            <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+          </div>
+        </div>
+        <div class="item" style="background-image: url(./img/清明.jpg);">
+          <div class="content">
+            <div class="name">【清明】</div>
+            <div class="des">4月5日前后,是中国最重要的祭祀节日，是最适合祭祖和扫墓的日子。扫墓俗称上坟，祭祀死者的一种活动。汉族和一些少数民族大多都是在清明节扫墓。</div>
+            <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+          </div>
+        </div>
+        <div class="item" style="background-image: url(./img/端午.png);">
+          <div class="content">
+            <div class="name">【端午】</div>
+            <div class="des">
+              农历五月初五日为“端午节”，是中国一个古老的传统节日。“端午”本名“端五”，端是初的意思。因为人们认为“五月”是恶月，“初五”是恶日，因而避讳“五”，改为“端午”。端午节早在西周初期即有记载，并非为纪念屈原而设立的节日，但是端午节之后的一些习俗受到屈原的影响。
+            </div>
+            <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+          </div>
+        </div>
+        <div class="item" style="background-image: url(./img/七夕2.png);">
+          <div class="content">
+            <div class="name">【七夕】</div>
+            <div class="des">
+              七月初七,七夕节，亦称为七巧节、七姐节、女儿节、乞巧节、七娘会、巧夕、牛公牛婆日及双七等，是中国传统的民间庆典，庆祝时间定于农历七月初七。这一天，人们会进行拜祭七姐的仪式，祈求智慧和手艺，观赏牵牛星与织女星，祈愿美好的姻缘，以及储存所谓的七夕水等传统活动。
+            </div>
+            <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+          </div>
+        </div>
+        <div class="item" style="background-image: url(./img/中秋2.jpg);">
+          <div class="content">
+            <div class="name">【中秋】</div>
+            <div class="des">
+              八月十五,中秋节，又称月夕、秋节、仲秋节、拜月节、团圆节等，是中国民间的传统节日。中秋节源自天象崇拜，由上古时代秋夕祭月演变而来。中秋节自古便有祭月、赏月、吃月饼、玩花灯、赏桂花、饮桂花酒等民俗，流传经久不息。
+            </div>
+            <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+          </div>
+        </div>
+        <div class="item" style="background-image: url(./img/除夕2.png);">
+          <div class="content">
+            <!-- <img src="./img/灯笼.gif" style="margin-top: -200px; height: 380px; margin-left: 500px;" /> -->
+            <div class="content_1">【除夕】</div>
+            <div class="des">
+              腊月廿九或三十,农历腊月的最后一天叫除夕。“除”，本义是“去”，引申为“易”；“夕”字的本义原是“日暮”，引申为“夜晚”。故而除夕之夜，便含有“旧岁到此而除，明日另换新岁”的意思，即“除旧布新”。
+            </div>
+            <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <div class="s_button">&lt;</div>
+        <div class="s_button">&gt;</div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+  <div class="end">
+    <div class="try">
+      <header>
+        <img src="./img/logo5.png" alt="">
+      </header>
+      <p>中国节日，丰富多彩</p>
+      <ul>
+        <li>
+          <img class="zheng" src="./img/国庆.jpg" alt="">
+          <img class="fan" src="./img/国庆动画.jpg" alt="">
+          <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+        </li>
+        <li>
+          <img class="zheng" src="./img/中元节.jpg" alt="">
+          <img class="fan" src="./img/中元节1.jpg" alt="">
+          <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+        </li>
+        <li>
+          <img class="zheng" src="./img/建军节1.gif" alt="">
+          <img class="fan" src="./img/建军节.png" alt="">
+          <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <img class="zheng" src="./img/重阳节1.jpg" alt="">
+          <img class="fan" src="./img/重阳节.png" alt="">
+          <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+        </li>
+        <li>
+          <img class="zheng" src="./img/儿童节1.jpg" alt="">
+          <img class="fan" src="./img/儿童节.jpg" alt="">
+          <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+        </li>
+        <li>
+          <img class="zheng" src="./img/冬至.png" alt="">
+          <img class="fan" src="./img/冬至1.png" alt="">
+          <!-- <a href="./index3.html" style="color: black;"><button>更多详情</button></a> -->
+        </li>
+      </ul>
+    </div>
+    <div class="bot">
+      <button><a href="./xisu.html" style="color: black;">更多详细>></a></button>
+    </div>
+  </div>
+  <!-- <main>
+    <div class="intro">
+      <p>中国传统节日，是中华民族悠久历史文化的重要组成部分，形式多样、内容丰富。</p>
+      <p>传统节日的形成，是一个民族或国家的历史文化长期积淀凝聚的过程。从远古先民时期发展而来的中华传统节日清晰地记录着中华民族丰富而多彩的社会生活文化内容，乃中华民族特有的特色节日。</p>
+    </div>
+  </main> -->
+  <footer>
+    <p>版权所有 &copy; 2024 年</p>
+  </footer>
+  <script>
+    let _direction = true;
+    let _move = () => {
+      let lists = document.querySelectorAll('.item');
+      if (_direction) {
+        document.querySelector('#slide').appendChild(lists[0]);
+      } else {
+        document.querySelector('#slide').prepend(lists[lists.length - 1]);
+      }
+    }
+    let timer = setInterval(_move, 3000);
+    document.querySelector('.container').addEventListener('mouseover', () => {
+      clearInterval(timer);
+    });
+    document.querySelector('.container').addEventListener('mouseout', () => {
+      timer = setInterval(_move, 2500);
+    });
+    document.querySelectorAll('.s_button')[1].onclick = () => {
+      _direction = true;
+      _move();
+    }
+    document.querySelectorAll('.s_button')[0].onclick = () => {
+      _direction = false;
+      _move();
+    }
+
+  </script>
+</body>
+
+</html>
