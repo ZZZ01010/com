@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url(/img/背景2.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+ .login-container {
+    width: 350px;
+    padding: 30px;
+    background: url(./img/背景2.jpg);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  h2 {
+    color: #333;
+    margin-top: 0;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: #666;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+ .forgot-password {
+    text-align: right;
+    margin-top: 10px;
+    color: #888;
+  }
+
+ .error {
+    color: red;
+    font-size: 14px;
+  }

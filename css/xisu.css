@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url(/img/背景2.jpg);
+  }
+
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    z-index: 999;
+  }
+
+  header ul {
+    height: 30%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  header ul img{
+    width: 140px;
+    height: 50px; 
+    float: right;
+    margin-right: 100px;
+  }
+  
+  header ul li {
+      float: left;
+  }
+
+  header ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+
+  header ul li a:hover {
+    background-color: #555;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  main {
+      margin: 100px;
+
+  }
+  main a{
+    text-decoration: none;
+    color: black;
+  }
+
+  h2 {
+    border-bottom: 2px solid #343a40;
+    padding-bottom: 5px;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+ .festival-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+ .festival-item {
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 5px;
+  }
+
+  .festival-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .festival-item:hover {
+    background-color: rgb(255, 0, 51);
+  }
+
+  footer {
+    background-color: #343a40;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
